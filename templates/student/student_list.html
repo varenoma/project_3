@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Talabalar
+{% endblock %}
+
+{% block content %}
+  <div class="talaba_list">
+    <a href="{% url "student:add_student" %}" class="btn btn-primary mt-3">Talaba qo'shish</a>
+    <div class="row">
+      {% for d in data %}
+        <div class="card m-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ d.full_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ d.grate }}</h6>
+            <p class="card-text">
+              {% if d.is_active %}
+                Aktiv talaba
+              {% else %}
+                Noaktiv talaba
+              {% endif %}
+            </p>
+            <a href="{% url 'student:student_detail' d.pk %}" class="card-link">Ko'rish</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

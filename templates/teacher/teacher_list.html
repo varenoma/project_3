@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  O'qituvchilar
+{% endblock %}
+
+{% block content %}
+  <div class="teacher_list">
+    <a href="{% url 'teacher:add_teacher' %}" class="btn btn-primary mt-3">O'qituvchi qo'shish</a>
+    <div class="row">
+      {% for d in data %}
+        <div class="card m-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ d.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ d.email }}</h6>
+            <p class="card-text">{{ d.experience_years }}</p>
+            <a href="{% url 'teacher:teacher_detail' d.pk %}" class="card-link">Ko'rish</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

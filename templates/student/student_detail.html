@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ student.full_name }} detail
+{% endblock %}
+
+{% block content %}
+  <div class="student_detail_div">
+    <div class="card m-3">
+      <div class="card-header">Active: {{ student.is_active }}</div>
+      <div class="card-body">
+        <h5 class="card-title fs-1 pt-3 pb-3">{{ student.full_name }}</h5>
+        <p class="card-text">
+          {% if student.grade == 100 %}
+            Zo'r: {{ student.grade }} ball.
+          {% elif 60 < student.grade and student.grade < 100 %}
+            Yaxshi: {{ student.grade }} ball.
+          {% elif 0 < student.grade and student.grade < 60 %}
+            Yomon: {{ student.grade }} ball.
+          {% endif %}
+        </p>
+      </div>
+      <div class="card-footer d-flex justify-content-end">
+        <a href="{% url 'student:student_list' %}" class="btn btn-secondary m-2">Orqaga qaytish</a>
+        <a href="{% url 'student:edit_student' student.pk %}" class="btn btn-warning m-2">Tahrirlash</a>
+        <a href="{% url 'student:delete_student' student.pk %}" class="btn btn-danger m-2">O'chirish</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

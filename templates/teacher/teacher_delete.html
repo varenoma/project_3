@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ teacher.name }} delete
+{% endblock %}
+
+{% block content %}
+  <h1 class="p-5">"{{ teacher.name }}" o'chirilsinmi?</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="p-5">
+      <button class="btn btn-danger" type="submit">Ha</button>
+      <a class="btn btn-primary" href="{% url 'teacher:teacher_list' %}">Orqaga qaytish</a>
+    </div>
+  </form>
+{% endblock %}

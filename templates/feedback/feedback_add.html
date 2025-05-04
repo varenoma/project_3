@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+  Feedback qo'shish
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-center p-5">Feedback qo'shish</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success p-2" type="submit">Saqlash</button>
+    <a class="btn btn-danger" href="{% url 'feedback:feedback_list' %}">Bekor qilish</a>
+  </form>
+{% endblock %}
