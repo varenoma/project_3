@@ -6,7 +6,13 @@
 
 {% block content %}
   <div class="teacher_list">
-    <a href="{% url 'teacher:add_teacher' %}" class="btn btn-primary mt-3">O'qituvchi qo'shish</a>
+    <div class="div_kk">
+      {% if user.is_authenticated %}
+        <a href="{% url 'teacher:add_teacher' %}" class="btn btn-primary mt-3">O'qituvchi qo'shish</a>
+      {% else %}
+        <a href="{% url 'app:index' %}" class="btn btn-warning mt-3">Ro'yxatdan o'tmagansiz</a>
+      {% endif %}
+    </div>
     <div class="row">
       {% for d in data %}
         <div class="card m-3" style="width: 18rem;">

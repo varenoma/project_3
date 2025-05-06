@@ -16,7 +16,16 @@
   <body>
     <nav style="box-shadow: 0 0 5px black;" class="navbar navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand mx-auto p-3 fs-2" href="{% url 'app:index' %}">Bosh sahifa</a>
+        <a class="navbar-brand p-3" href="{% url 'app:index' %}">Bosh sahifa</a>
+        <div class="p-3">
+          {% if user.is_authenticated %}
+            Hush kelibsiz: <b>{{ user.username }}</b>
+            <a class="navbar-link p-2 m-2 btn btn-danger" href="{% url 'accaunt:logout' %}">Chiqish</a>
+          {% else %}
+            <a class="navbar-link p-2 btn btn-success" href="{% url 'accaunt:create_accaunt' %}">Ro'yxatdan o'tish</a>
+            <a class="navbar-link p-2 btn btn-success" href="{% url 'accaunt:login' %}">Kirish</a>
+          {% endif %}
+        </div>
       </div>
     </nav>
     <div class="container">

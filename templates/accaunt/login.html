@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Hisobga Kirish
+{% endblock %}
+
+{% block content %}
+  <form class="card p-5 m-5" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Kirish</button>
+  </form>
+{% endblock %}

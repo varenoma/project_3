@@ -6,14 +6,20 @@
 
 {% block content %}
   <div class="feedback_list">
-    <a href="{% url 'feedback:feedback_add' %}" class="btn btn-primary mt-3">feedback qo'shish</a>
+    <div class="div_kk">
+      {% if user.is_authenticated %}
+        <a href="{% url 'feedback:feedback_add' %}" class="btn btn-primary mt-3">feedback qo'shish</a>
+      {% else %}
+        <a href="{% url 'app:index' %}" class="btn btn-warning mt-3">Ro'yxatdan o'tmagansiz</a>
+      {% endif %}
+    </div>
     <div class="row">
       {% for d in feedback %}
         <div class="card m-3" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">{{ d.student_name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ d.grate }}</h6>
-            <p class="card-text">{{d.message}}</p>
+            <p class="card-text">{{ d.message }}</p>
           </div>
         </div>
       {% endfor %}
